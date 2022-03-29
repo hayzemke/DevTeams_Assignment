@@ -11,14 +11,12 @@ public class Program_UI
     {
         _devTeamRepo = new DevTeamRepo(_devRepo);
     }
-
     public void Run()
     {
         SeedData();
 
         RunApplication();
     }
-
     private void RunApplication()
     {
         bool isRunning = true;
@@ -39,9 +37,7 @@ public class Program_UI
             "6. Create Team\n" +
             "7. See All Teams\n" +
             "8. Find Team by ID\n" +
-            "9. Add Developer to Team\n" +
-            "10. Remove Developr from Team\n" +
-            "11. Remove Team\n" +
+            "9. Remove Team\n" +
             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
             "12. Close Application!\n");
 
@@ -95,11 +91,8 @@ public class Program_UI
                     break;
             }
         }
-
-
         PressAnyKeyToContinue();
     }
-
     private bool CloseApplication()
     {
         Console.Clear();
@@ -107,16 +100,15 @@ public class Program_UI
         PressAnyKeyToContinue();
         return false;
     }
-
     private void RemoveTeam()
     {
         Console.Clear();
 
-        try
+       try
         {
-            System.Console.WriteLine("Please Input An Existing DevTeam ID:");
-            int teamID = int.Parse(Console.ReadLine());
-            var selectedDevTeam = _devTeamRepo.GetDevTeamsByID(teamID);
+            System.Console.WriteLine("Please Input An Existing Dev Team ID:");
+            int devTeamID = int.Parse(Console.ReadLine());
+            var selectedDevTeam = _devTeamRepo.GetDevTeamsByID(devTeamID);
             if (selectedDevTeam != null)
             {
                 bool isSuccessful = _devTeamRepo.RemoveDevTeamFromList(selectedDevTeam.TeamID);
@@ -131,16 +123,14 @@ public class Program_UI
             }
             else
             {
-                System.Console.WriteLine("Developer Does Not Exist!");
+                System.Console.WriteLine("DevTeam Does Not Exist!");
             }
-
         }
         catch
         {
-
             System.Console.WriteLine("Sorry Invalid Selection!");
         }
-
+        
         PressAnyKeyToContinue();
     }
 
@@ -160,7 +150,6 @@ public class Program_UI
             {
                 System.Console.WriteLine("Developer Does Not Exist!");
             }
-
         }
         catch
         {
@@ -246,11 +235,9 @@ public class Program_UI
             {
                 System.Console.WriteLine("Developer Does Not Exist!");
             }
-
         }
         catch
         {
-
             System.Console.WriteLine("Sorry Invalid Selection!");
         }
 
